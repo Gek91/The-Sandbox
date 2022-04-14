@@ -1,0 +1,13 @@
+package architecturalPattern.domainLogicPattern.domainModel;
+
+public class CompleteRecognitionStrategy extends RecognitionStrategy {
+
+	@Override
+	public void calculateRevenueRecognitions(Contract contract) {
+		
+		contract.addRevenueRecognition(
+				new RevenueRecognition(contract.getRevenue(), contract.getWhenSigned())
+				);
+	}
+
+}
