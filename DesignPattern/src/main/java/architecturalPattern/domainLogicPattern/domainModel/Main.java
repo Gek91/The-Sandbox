@@ -1,8 +1,10 @@
 package architecturalPattern.domainLogicPattern.domainModel;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Date;
 
-import util.DateUtil;
 
 public class Main {
 
@@ -13,7 +15,7 @@ public class Main {
 		Product calc = Product.newSpreadsheet("Spreadsheet");
 		Product db = Product.newDatabase("Database");
 		
-		Date now = new Date();
+		Instant now = Instant.now();
 		
 		Contract wordContrac = new Contract(word, 3, now);
 		wordContrac.calculateRecognitions();
@@ -27,21 +29,21 @@ public class Main {
 		System.out.println("Spreadsheet revenue: " + calcContrac.recognizedRevenue(now));
 		System.out.println("Database revenue: " + dbContrac.recognizedRevenue(now));
 
-		now = DateUtil.addDays(now, 30);
+		now = now.plus(30, ChronoUnit.DAYS);
 		
 		System.out.println("30 Days");
 		System.out.println("Word Processor revenue: " + wordContrac.recognizedRevenue(now));
 		System.out.println("Spreadsheet revenue: " + calcContrac.recognizedRevenue(now));
 		System.out.println("Database revenue: " + dbContrac.recognizedRevenue(now));
-		
-		now = DateUtil.addDays(now, 30);
+
+		now = now.plus(30, ChronoUnit.DAYS);
 
 		System.out.println("60 Days");
 		System.out.println("Word Processor revenue: " + wordContrac.recognizedRevenue(now));
 		System.out.println("Spreadsheet revenue: " + calcContrac.recognizedRevenue(now));
 		System.out.println("Database revenue: " + dbContrac.recognizedRevenue(now));
-		
-		now = DateUtil.addDays(now, 30);
+
+		now = now.plus(30, ChronoUnit.DAYS);
 		
 		System.out.println("90 Days");
 		System.out.println("Word Processor revenue: " + wordContrac.recognizedRevenue(now));

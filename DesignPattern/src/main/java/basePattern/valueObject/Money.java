@@ -3,7 +3,7 @@ package basePattern.valueObject;
 import java.math.BigDecimal;
 import java.util.Currency;
 
-import org.junit.Assert;
+import io.jsonwebtoken.lang.Assert;
 
 public class Money {
 
@@ -95,7 +95,7 @@ public class Money {
 	}
 	
 	private void assertSameCurrencyAs(Money arg) {
-		Assert.assertEquals("money math mismatch", currency, arg.currency);
+		Assert.isTrue(currency.equals(arg.currency));
 	}
 	
 	private int centFactor() {

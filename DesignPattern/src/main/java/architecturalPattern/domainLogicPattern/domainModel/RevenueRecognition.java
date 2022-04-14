@@ -1,16 +1,17 @@
 package architecturalPattern.domainLogicPattern.domainModel;
 
+import java.time.Instant;
 import java.util.Date;
 
 public class RevenueRecognition {
 
 	private long amount;
-	private Date date;
+	private Instant date;
 	
 	/*
 	 * Constructor
 	 */
-	public RevenueRecognition(long amount, Date date) {
+	public RevenueRecognition(long amount, Instant date) {
 		this.amount = amount;
 		this.date = date;
 	}
@@ -19,7 +20,7 @@ public class RevenueRecognition {
 		return this.amount;
 	}
 
-	boolean isRecognizableBy(Date asOf) {
-		return asOf.after(this.date) || asOf.equals(this.date);
+	boolean isRecognizableBy(Instant asOf) {
+		return asOf.isAfter(this.date) || asOf.equals(this.date);
 	}
 }

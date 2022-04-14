@@ -1,11 +1,11 @@
 package architecturalPattern.domainLogicPattern.transactionScript;
 
-import java.util.Date;
+import java.time.Instant;
 
 public class Contract {
 
 	private long revenue;
-	private Date dateSigned;
+	private Instant dateSigned;
 	private String type;
 	
 	public long getRevenue() {
@@ -14,10 +14,10 @@ public class Contract {
 	public void setRevenue(long revenue) {
 		this.revenue = revenue;
 	}
-	public Date getDateSigned() {
+	public Instant getDateSigned() {
 		return dateSigned;
 	}
-	public void setDateSigned(Date dateSigned) {
+	public void setDateSigned(Instant dateSigned) {
 		this.dateSigned = dateSigned;
 	}
 	public String getType() {

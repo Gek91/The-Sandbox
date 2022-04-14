@@ -1,6 +1,6 @@
 package architecturalPattern.domainLogicPattern.serviceLayer;
 
-import java.util.Date;
+import java.time.Instant;
 
 public class RecognitionService extends ApplicationService {
 
@@ -13,7 +13,7 @@ public class RecognitionService extends ApplicationService {
 		getIntegrationGateway().publishRevenueRecognitionCalculation(contract);
 	}
 	
-	public long recognizedRevenue(long contractNumber, Date asOf) {
+	public long recognizedRevenue(long contractNumber, Instant asOf) {
 		return ContractWithServiceLayerMethods.read(contractNumber).recognizedRevenue(asOf);
 	}
 }

@@ -1,9 +1,9 @@
 package architecturalPattern.domainLogicPattern.transactionScript;
 
-import java.util.Date;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import util.DateUtil;
 
 
 public class RecognitionService {
@@ -23,8 +23,8 @@ public class RecognitionService {
 			switch (contract.getType()) {
 			case "S":
 				db.insertRecognition(contractNumber, contract.getRevenue()/3, contract.getDateSigned());
-				db.insertRecognition(contractNumber, contract.getRevenue()/3, DateUtil.addDays(contract.getDateSigned(), 30));
-				db.insertRecognition(contractNumber, contract.getRevenue()/3, DateUtil.addDays(contract.getDateSigned(), 90));
+				db.insertRecognition(contractNumber, contract.getRevenue()/3, contract.getDateSigned().plus(30, ChronoUnit.DAYS));
+				db.insertRecognition(contractNumber, contract.getRevenue()/3, contract.getDateSigned().plus(90, ChronoUnit.DAYS));
 				break;
 				
 			case "W":
@@ -33,8 +33,8 @@ public class RecognitionService {
 			
 			case "D":
 				db.insertRecognition(contractNumber, contract.getRevenue()/3, contract.getDateSigned());
-				db.insertRecognition(contractNumber, contract.getRevenue()/3, DateUtil.addDays(contract.getDateSigned(), 30));
-				db.insertRecognition(contractNumber, contract.getRevenue()/3, DateUtil.addDays(contract.getDateSigned(), 60));
+				db.insertRecognition(contractNumber, contract.getRevenue()/3, contract.getDateSigned().plus(30, ChronoUnit.DAYS));
+				db.insertRecognition(contractNumber, contract.getRevenue()/3, contract.getDateSigned().plus(60, ChronoUnit.DAYS));
 				break;
 			
 			default:
@@ -46,7 +46,7 @@ public class RecognitionService {
 		}
 	}
 	
-	public long recognizedRevenue(long contractNumber, Date asOf) {
+	public long recognizedRevenue(long contractNumber, Instant asOf) {
 		
 		long result = 0;
 		

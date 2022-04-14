@@ -1,6 +1,7 @@
 package architecturalPattern.domainLogicPattern.domainModel;
 
-import util.DateUtil;
+
+import java.time.temporal.ChronoUnit;
 
 public class ThreeWayRecognitionStrategy extends RecognitionStrategy {
 
@@ -19,8 +20,8 @@ public class ThreeWayRecognitionStrategy extends RecognitionStrategy {
 	void calculateRevenueRecognitions(Contract contract) {
 		
 		contract.addRevenueRecognition(new RevenueRecognition(contract.getRevenue()/3, contract.getWhenSigned()));
-		contract.addRevenueRecognition(new RevenueRecognition(contract.getRevenue()/3, DateUtil.addDays(contract.getWhenSigned(), this.firstRecognitionOffset)));
-		contract.addRevenueRecognition(new RevenueRecognition(contract.getRevenue()/3, DateUtil.addDays(contract.getWhenSigned(), this.secondRecognitionOffset)));
+		contract.addRevenueRecognition(new RevenueRecognition(contract.getRevenue()/3, contract.getWhenSigned().plus(this.firstRecognitionOffset, ChronoUnit.DAYS)));
+		contract.addRevenueRecognition(new RevenueRecognition(contract.getRevenue()/3, contract.getWhenSigned().plus(this.secondRecognitionOffset, ChronoUnit.DAYS)));
 	}
 	
 }

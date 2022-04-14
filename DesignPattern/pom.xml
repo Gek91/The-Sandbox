@@ -7,6 +7,16 @@
 	<artifactId>design-pattern</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<dependencies>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
