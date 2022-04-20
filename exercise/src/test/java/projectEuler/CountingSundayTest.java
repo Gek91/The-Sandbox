@@ -4,15 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+
 import projectEuler.CountingSunday.*;
-
-
 
 public class CountingSundayTest {
 	
 	@Test
 	public void isLeapYear(){
-		assertEquals(false,projectEuler.CountingSunday.isLeapYear(1000));
+		assertEquals(false,CountingSunday.isLeapYear(1000));
 		assertEquals(true,CountingSunday.isLeapYear(1200));
 		assertEquals(false,CountingSunday.isLeapYear(10));
 		assertEquals(true,CountingSunday.isLeapYear(20));
