@@ -32,7 +32,7 @@ public class Main {
 		//required for serialization and deserialization of the data of an entity
 		Edm edm = client.getRetrieveRequestFactory().getMetadataRequest(SERVICE_BASE_URL).execute().getBody();
 		new EdmInsperctor(edm).readEdmInfo();
-
+/*
 		//retrieving
 		readPeopleEntrySet(client);
 
@@ -57,6 +57,9 @@ public class Main {
 		patchPeopleEntity(client, optionalType.get().getFullQualifiedName(),"russellwhyte");
 
 		deletePeopleEntity(client,"russellwhyte");
+*/
+		Optional<EdmEntityType> optionalType = edm.getSchema("Trippin").getEntityTypes().stream().filter(x -> x.getName().equals("Airline")).findFirst();
+		updateWithEtag(client, optionalType.get().getFullQualifiedName(), "AA");
 	}
 
 	private static void readPeopleEntrySet(ODataClient client) {
@@ -302,4 +305,44 @@ public class Main {
 				client.newURIBuilder(SERVICE_BASE_URL).appendEntitySetSegment("People").appendKeySegment(entitykey).build()
 		).execute();
 	}
+
+	private static void updateWithEtag(ODataClient client, FullQualifiedName entityFullQualifiedName, Object entitykey) {
+
+		ODataEntityRequest<ClientEntity> request = client.getRetrieveRequestFactory()
+				.getEntityRequest(client.newURIBuilder(SERVICE_BASE_URL)
+						.appendEntitySetSegment("Airlines")
+						.appendKeySegment(entitykey) //key of entity
+						.build());
+
+		ODataRetrieveResponse<ClientEntity> response = request.execute();
+		ClientEntity entity = response.getBody();
+
+		System.out.println("Properties count " + entity.getProperties().size());
+		System.out.println("Name: " + entity.getProperties().get(0).getName());
+		System.out.println("Value " + entity.getProperties().get(0).getValue().toString());
+		System.out.println("Name: " + entity.getProperties().get(1).getName());
+		System.out.println("Value " + entity.getProperties().get(1).getValue().toString());
+		System.out.println("ETag " + entity.getETag());
+
+		//build update data
+
+		ClientEntity newEntity = client.getObjectFactory().newEntity(entityFullQualifiedName);
+		newEntity.getProperties().add(client.getObjectFactory().newPrimitiveProperty( //primitive field
+				"AirlineCode",
+				client.getObjectFactory().newPrimitiveValueBuilder().buildString("AA"))
+		);
+		newEntity.getProperties().add(client.getObjectFactory().newPrimitiveProperty( //primitive field
+				"Name",
+				client.getObjectFactory().newPrimitiveValueBuilder().buildString("updated"))
+		);
+		//Etag support
+		newEntity.setETag(entity.getETag());
+
+		ODataEntityUpdateResponse<ClientEntity> people = client.getCUDRequestFactory().getEntityUpdateRequest(
+				client.newURIBuilder(SERVICE_BASE_URL).appendEntitySetSegment("Airlines").appendKeySegment(entitykey).build(),
+				UpdateType.REPLACE,
+				newEntity
+		).execute();
+	}
+
 }
