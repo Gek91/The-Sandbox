@@ -1,26 +1,23 @@
 package xmlParser;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.Stack;
 
-import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
-
-
-public class Main {
+public class FullTreePrint {
 
 	private static final String FILENAME = "example.xml";
-//	private static final String FILENAME = "/Users/gek/Dev/Git/Java/WRAP.XML";
-
 	
 	public static void main(String[] args) {
 		
@@ -32,7 +29,7 @@ public class Main {
 
 	          DocumentBuilder db = dbf.newDocumentBuilder();
 
-	          Document doc = db.parse(new File(Main.class.getClassLoader().getResource(FILENAME).toURI()));
+	          Document doc = db.parse(new File(FullTreePrint.class.getClassLoader().getResource(FILENAME).toURI()));
 	          
 	          doc.getDocumentElement().normalize();
 	          
