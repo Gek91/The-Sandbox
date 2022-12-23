@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>The-Sandbox</groupId>
+	<artifactId>guice-webapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>war</packaging>
+
+	<properties>
+		<resteasy.version>3.1.4.Final</resteasy.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>3.15.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-guice</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson2-provider</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>src/main/webapp</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>WEB-INF/appengine-web.xml</include>
+								<include>WEB-INF/web.xml</include>
+								<include>portal/index.html</include>
+								<include>apidocs/index.html</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
