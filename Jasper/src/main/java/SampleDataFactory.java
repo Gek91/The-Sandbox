@@ -9,18 +9,18 @@ public class SampleDataFactory {
 		
 		Company c = new Company();
 		result.add(c);
-		c.setName("Injenia");
+		c.setName("AZ");
 		List<Employee> employees = new ArrayList<Employee>();
 		c.setEmployees(employees);
 		Employee e = new Employee();
 		employees.add(e);
-		e.setFirstname("Fontanelli");
-		e.setLastname("Davide");
+		e.setFirstname("Davide");
+		e.setLastname("C");
 		
 		e = new Employee();
 		employees.add(e);
-		e.setFirstname("Pandini");
-		e.setLastname("Giacomo");
+		e.setFirstname("Giacomo");
+		e.setLastname("P");
 
 		
 		c = new Company();
@@ -30,13 +30,13 @@ public class SampleDataFactory {
 		c.setEmployees(employees);
 		e = new Employee();
 		employees.add(e);
-		e.setFirstname("Albertazzi");
-		e.setLastname("Luca");
+		e.setFirstname("Luca");
+		e.setLastname("Z");
 		
 		e = new Employee();
 		employees.add(e);
-		e.setFirstname("De Angelis");
-		e.setLastname("Silvia");
+		e.setFirstname("Silvia");
+		e.setLastname("T");
 
 		
 		return result;
