@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: livenesspod
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        httpGet:
+          path: /health-timer-fail
+          port: 8080
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      ports:
+        - containerPort: 8080

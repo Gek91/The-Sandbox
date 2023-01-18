@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+spec:
+  selector:
+    matchLabels:
+      app: mydeploy
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: mydeploy
+    spec:
+      containers:
+        - name:  basic-api
+          image: basic-api
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080

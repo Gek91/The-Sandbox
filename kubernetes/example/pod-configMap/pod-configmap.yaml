@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  HELLO: "Hello from Kubernetes"
+  file-to-load : |
+    key1=val1
+    ke2=val2
+binaryData:
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+      - containerPort: 8080
+      env:
+        - name : HELLO_SINGLE
+          valueFrom:
+            configMapKeyRef:
+              key: HELLO
+              name : config
+      envFrom:
+        - configMapRef:
+            name: config
+      volumeMounts:
+        - name : config-volume
+          mountPath: /application.properties
+          subPath: file-to-load
+  volumes:
+    - name: config-volume
+      configMap:
+        name: config
