@@ -2,7 +2,7 @@
 Single pod with config map
 
 create configmap and pod using<br>
-<code>kubeclt apply -f pod-configmap.yaml</code>
+<code>kubectl apply -f pod-configmap.yaml</code>
 
 enable proxy to access specific api to check config map values used in the application:<br>
 <code>kubectl proxy</code><br>

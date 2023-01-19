@@ -3,7 +3,7 @@ Simple example that uses a single pod.
 
 <code>kubectl get pods</code> show no pods
 
-<code>kubeclt apply -f single-pod.yaml</code> to deploy the pod
+<code>kubectl apply -f single-pod.yaml</code> to deploy the pod
 
 <code>"kubectl get pods"</code> 
 must show the new pod just created

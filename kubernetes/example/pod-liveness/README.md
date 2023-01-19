@@ -2,7 +2,7 @@
 Simple that show liveness pod lifecycle. The container has an api that return 500 after 30 seconds from startup<br><br>
 <code>kubectl get pods</code> show no pods
 
-<code>kubeclt apply -f liveness-pod.yaml</code> to deploy the pod
+<code>kubectl apply -f liveness-pod.yaml</code> to deploy the pod
 
 <code>"kubectl get pods"</code> 
 must show the new pod just created in running status
