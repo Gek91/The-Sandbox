@@ -1,9 +1,9 @@
-package springExample.service.impl;
+package springAppExample.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import springExample.repository.UserCrudRepository;
-import springExample.service.UserDetailService;
+import springAppExample.repository.UserCrudRepository;
+import springAppExample.service.UserDetailService;
 
 
 @Service

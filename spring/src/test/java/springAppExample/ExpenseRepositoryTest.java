@@ -1,4 +1,4 @@
-package springExample;
+package springAppExample;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,10 +8,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import springExample.model.Expense;
-import springExample.model.ExpenseType;
-import springExample.repository.ExpenseCrudRepository;
-import springExample.repository.ExpenseRepository;
+import springAppExample.model.Expense;
+import springAppExample.model.ExpenseType;
+import springAppExample.repository.ExpenseCrudRepository;
+import springAppExample.repository.ExpenseRepository;
 
 import java.time.LocalDate;
 import java.util.List;

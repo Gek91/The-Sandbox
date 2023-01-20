@@ -1,4 +1,4 @@
-package springExample.model;
+package springAppExample.model;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

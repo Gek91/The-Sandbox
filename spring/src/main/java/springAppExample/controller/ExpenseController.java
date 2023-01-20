@@ -1,9 +1,9 @@
-package springExample.controller;
+package springAppExample.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springExample.model.Expense;
-import springExample.model.ExpenseType;
+import springAppExample.model.Expense;
+import springAppExample.model.ExpenseType;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package springExample.repository.impl;
+package springAppExample.repository.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -9,10 +9,10 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import springExample.model.Expense;
-import springExample.model.ExpenseSplit;
-import springExample.model.ExpenseType;
-import springExample.repository.ExpenseRepository;
+import springAppExample.model.Expense;
+import springAppExample.model.ExpenseSplit;
+import springAppExample.model.ExpenseType;
+import springAppExample.repository.ExpenseRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

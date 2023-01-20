@@ -1,15 +1,15 @@
-package springExample.controller.impl;
+package springAppExample.controller.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import springExample.controller.ExpenseController;
-import springExample.model.Expense;
-import springExample.model.ExpenseType;
-import springExample.repository.ExpenseCrudRepository;
-import springExample.repository.ExpenseRepository;
+import springAppExample.controller.ExpenseController;
+import springAppExample.model.Expense;
+import springAppExample.model.ExpenseType;
+import springAppExample.repository.ExpenseCrudRepository;
+import springAppExample.repository.ExpenseRepository;
 
 import java.util.List;
 import java.util.Optional;

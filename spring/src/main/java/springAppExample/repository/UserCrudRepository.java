@@ -1,8 +1,8 @@
-package springExample.repository;
+package springAppExample.repository;
 
 
 import org.springframework.data.repository.CrudRepository;
-import springExample.model.User;
+import springAppExample.model.User;
 
 //CrudRepository, automatic crud generation of repository method
 public interface UserCrudRepository extends CrudRepository<User, Long> {

@@ -1,4 +1,4 @@
-package springExample.service;
+package springAppExample.service;
 
 
 public interface UserDetailService {

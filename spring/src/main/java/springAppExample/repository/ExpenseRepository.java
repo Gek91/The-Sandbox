@@ -1,7 +1,7 @@
-package springExample.repository;
+package springAppExample.repository;
 
-import springExample.model.Expense;
-import springExample.model.ExpenseType;
+import springAppExample.model.Expense;
+import springAppExample.model.ExpenseType;
 
 import java.util.List;
 
