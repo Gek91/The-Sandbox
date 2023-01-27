@@ -1,11 +1,10 @@
-package algorithms.dataStructure.heap.impl;
+package dataStructure.heap.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import algorithms.dataStructure.heap.Heap;
-import algorithms.dataStructure.heap.Heap.HeapType;
+import dataStructure.heap.Heap;
 
 
 /**

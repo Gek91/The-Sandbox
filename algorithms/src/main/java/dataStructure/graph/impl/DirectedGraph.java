@@ -1,4 +1,4 @@
-package algorithms.dataStructure.graph.impl;
+package dataStructure.graph.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-import algorithms.dataStructure.graph.Graph;
+import dataStructure.graph.Graph;
 
 
 

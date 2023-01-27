@@ -1,4 +1,4 @@
-package algorithms.dataStructure.tree;
+package dataStructure.tree;
 /**
  * 
  * @author Giacomo Pandini

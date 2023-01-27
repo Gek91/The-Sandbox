@@ -1,10 +1,10 @@
-package algorithms.sort;
+package algorithms.sorting;
 
 import java.lang.reflect.Array;
 
-import algorithms.dataStructure.heap.Heap;
-import algorithms.dataStructure.heap.Heap.HeapType;
-import algorithms.dataStructure.heap.impl.BinaryHeap;
+import dataStructure.heap.Heap;
+import dataStructure.heap.Heap.HeapType;
+import dataStructure.heap.impl.BinaryHeap;
 
 
 
@@ -14,7 +14,7 @@ import algorithms.dataStructure.heap.impl.BinaryHeap;
  * @author Gek
  *
  */
-public class Sort{
+public class Sorting {
 	
 	/**
 	 * Insertion Sort 
@@ -228,7 +228,7 @@ public class Sort{
 	 * @param A: Array to sort
 	 * @param upperBoundValue : value bigger than all the value in the array
 	 */
-	public static <T extends Comparable<T>> void countingsort(int A[], int upperBoundValue) { //k valore maggiorante degli elementi dell'array
+	public static <T extends Comparable<T>> void countingSort(Integer A[], int upperBoundValue) { //k valore maggiorante degli elementi dell'array
 		
 		int arrayLength = A.length;
 		int[] B = new int[arrayLength]; //result Array

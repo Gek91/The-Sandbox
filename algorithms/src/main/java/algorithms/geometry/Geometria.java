@@ -3,8 +3,8 @@ package algorithms.geometry;
 import java.util.Arrays;
 import java.util.Stack;
 
-import algorithms.dataStructure.tree.TreeElem;
-import algorithms.dataStructure.tree.impl.RBTree;
+import dataStructure.tree.TreeElem;
+import dataStructure.tree.impl.RBTree;
 
 
 
