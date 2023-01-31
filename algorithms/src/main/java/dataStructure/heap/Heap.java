@@ -1,5 +1,7 @@
 package dataStructure.heap;
 
+import java.util.List;
+
 /**
  * Heap data structure. Heap is a three base data structure that satisfies a particular property:
  *  - If the node A is father of the node B -> Key of A and B is ordered (max/min heap) 
@@ -48,10 +50,10 @@ public interface Heap<T extends Comparable<T>> {
 	/**
 	 * Create the heap from the array
 	 * 
-	 * @param array
+	 * @param input
 	 * @return
 	 */
-	public void heapify(T[] array);
+	public void heapify(List<T> input);
 	
 	public void printHeap();
 	

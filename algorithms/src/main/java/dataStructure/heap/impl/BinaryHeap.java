@@ -83,11 +83,11 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
 	}
 	
 	@Override
-	public void heapify(T[] array) {
+	public void heapify(List<T> input) {
 		
 		//WARNING: Arrays.asList create an immutable list
 		this.heap = new ArrayList<T>();
-		heap.addAll(Arrays.asList(array));
+		heap.addAll(input);
 		
 		for(int i = heap.size()/2 ; i >= 0 ; i-- ) {
 			heapify_down(i);

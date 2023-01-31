@@ -352,11 +352,11 @@ public class FibonacciHeap<T extends Comparable<T>> implements Heap<T>{
 
 
 	@Override
-	public void heapify(T[] array) {
+	public void heapify(List<T> input) {
 		
 		this.root = null;
 		
-		for(T elem : array) {
+		for(T elem : input) {
 			insert(elem);
 		}
 	}
