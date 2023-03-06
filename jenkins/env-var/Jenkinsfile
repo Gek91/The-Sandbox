@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    /* define global enviroment variables */
+    environment {
+        FIRST_VAR = 'value'
+        SECOND_VAR = """${sh( 
+            returnStdout: true,
+            script: 'echo "ciao"'
+        )}"""
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building ${FIRST_VAR} ${SECOND_VAR}"\
+            }
+        }
+        stage('Test') {
+            /* define local strage variables */
+            environment {
+                SECOND_VAR = "second"
+            }
+            steps {
+                echo "Testing ${FIRST_VAR} ${SECOND_VAR}"\
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploying ${FIRST_VAR} ${SECOND_VAR}"\
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+    username: sa
+    password: sa
+    initialization-mode: always #need it?
+
+  sql.init.mode: always #need it?
+  jpa.hibernate.ddl-auto: none #needed to lead data.sql with JPA
+
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    root: WARN
+    org.springframework.security: DEBUG
+
