@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    /* define global enviroment variables */
+    environment {
+       	CREDENTIALS = credentials("my-credentials")
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+               sh 'echo "Service user is $CREDENTIALSS_USR"'
+               sh 'echo "Service password is $CREDENTIALS_PSW"'
+               sh 'echo "credentials is $CREDENTIALS"'
+            }
+        }
+
+    }
+}

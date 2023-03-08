@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('outer stage') {
+            stages {
+            	stage('inner stage 1') {
+            		steps{
+            			echo 'steps 1'
+            		}
+            	}
+            	stage('inner stage 2') {
+					steps{
+						echo 'steps 2'
+					}
+				}
+            }
+        }
+    }
+}

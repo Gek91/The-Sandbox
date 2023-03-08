@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+	environment {
+        VAR = 'deploy'
+    }
+
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building ${env.BUILD_ID}"\
+            }
+        }
+        stage('Test') {
+        	when {
+        		environment name: 'VAR', value: 'test'
+        	}
+            steps {
+                echo "Testing ${env.BUILD_ID}"
+            }
+        }
+        stage('Deploy') {
+        	when {
+				environment name: 'VAR', value: 'deploy'
+			}
+            steps {
+                echo "Deploying ${env.BUILD_ID}"
+            }
+        }
+    }
+}

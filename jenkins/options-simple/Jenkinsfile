@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+	options {
+        timeout(time: 1, unit: 'HOURS')
+    }
+
+    stages {
+        stage('Build') {
+        	options {
+                timeout(time: 1, unit: 'MINUTES')
+            }
+            steps {
+                echo "Building ${env.BUILD_ID}"\
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing ${env.BUILD_ID}"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploying ${env.BUILD_ID}"
+            }
+        }
+    }
+}

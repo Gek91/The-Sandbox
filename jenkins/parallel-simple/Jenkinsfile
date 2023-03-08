@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            failFast true
+            parallel {
+            	stage('parallel a') {
+            		steps {
+            			echo "step parallel a"
+            		}
+            	}
+            	stage('parallel b') {
+					steps {
+						echo "step parallel b"
+					}
+				}
+				stage('parallel c') {
+					steps {
+						echo "step parallel c"
+					}
+				}
+            }
+        }
+    }
+}
