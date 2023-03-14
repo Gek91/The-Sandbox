@@ -5,9 +5,11 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
 import java.io.StringWriter;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
-public class BaseTemplate {
+public class LoopTemplate {
 
 	public static void main(String... args) {
 
@@ -16,13 +18,15 @@ public class BaseTemplate {
 		p.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
 		Velocity.init( p );
 
+		List<String> elements = Arrays.asList("one", "two", "three", "four");
+
 		VelocityContext context = new VelocityContext();
-		context.put("value", "value");
+		context.put("elements", elements);
 
 		Template template = null;
 
 		try {
-			template = Velocity.getTemplate("base_template.html");
+			template = Velocity.getTemplate("loop_template.html");
 
 			StringWriter sw = new StringWriter();
 
