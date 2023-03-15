@@ -17,9 +17,6 @@ def main():
     #list repeat
     print([1,2] * 3)
 
-    #list comprehension
-    uppercolors = [s.upper() + '!' for s in colors]
-    print(uppercolors)
 
     #combine with if
     nums = [2, 8, 1, 6]
