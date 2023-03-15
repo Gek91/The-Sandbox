@@ -11,6 +11,12 @@ def main():
     #in operator
     print('red' in colors)
 
+    #list concatenation
+    print([1,2,3] + [4,5,6])
+
+    #list repeat
+    print([1,2] * 3)
+
     #list comprehension
     uppercolors = [s.upper() + '!' for s in colors]
     print(uppercolors)
@@ -19,6 +25,13 @@ def main():
     nums = [2, 8, 1, 6]
     small = [ n for n in nums if n <= 2 ]
     print(small)
+
+    #del
+    print(len(nums))
+    print(2 in nums)
+    del nums[0]
+    print(2 in nums)
+    print(len(nums))
 
 if __name__ == '__main__':
     main()

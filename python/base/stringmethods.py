@@ -29,5 +29,12 @@ def main():
     #join
     print(s.join(['giorgio','gianni']))
 
+    #count
+    print(s.count('l'))
+
+    #index
+    print(s.index('l'))
+
+
 if __name__ == '__main__':
     main()

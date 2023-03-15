@@ -12,7 +12,10 @@ def main():
 
 
     #operator %
-    text = (
+    print("hello, %s" % "john")
+    print("list: %s" % [1,2,3])
+    #multiple value
+    text = ( 
     "%d little pigs come out, "
     "or I'll %s, and I'll %s, "
     "and I'll blow your %s down."
@@ -23,9 +26,9 @@ def main():
     h = {} #dictionary
     h['word'] = 'garfield'
     h['count'] = 42
-    s = 'I want %(count)d copies of %(word)s' % h
+    s = "I want %(count)d copies of %(word)s" % h
     print(s)
-    s = 'I want {count:d} copies of {word}'.format(h) #alternative notation
+    s = "I want {count:d} copies of {word}".format(h) #alternative notation
     print(s)
 
     
