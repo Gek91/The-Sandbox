@@ -13,8 +13,9 @@ def main():
     print(matrix.size) #elements
 
     #array creation
-    print(np.array([2,3,5]))
-    print(np.array([(1,2,3), (4,5,6)]))
+    print(np.array([2,3,5])) #1D
+    print(np.array([(1,2,3), (4,5,6)])) #2D
+    print(np.array([[(1,2), (3,4)], [(5,6),(7,8)]])) #3D
 
     print(np.zeros((3,4))) # arrays of zero of dimension 3 5
     print(np.ones((2,3,2))) # arrays of ones of dimension 2 3 2
@@ -26,11 +27,17 @@ def main():
     rg = np.random.default_rng(1)
     print(rg.random((2,3))) #random generated matrix
 
+    #2D array creation functions
+    print(np.eye(3)) #identity matrix
+    print(np.diag([1,4,5])) #identity with value on diag
 
     #Indexing
     a = np.arange(10)**3
     print(a)
     a[2] #normal list indexing and slicing 
+    a.shape = (2,5)
+    a[1,-1] #2D indexing
+    a[1] #second row
 
     #generate from function
     b = np.fromfunction(lambda x,y: x * 10 + y, (5,4))

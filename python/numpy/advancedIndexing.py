@@ -5,7 +5,7 @@ def main():
     a = np.arange(12)**2
     print(a)
 
-    indexarray = np.array([1,1,3,8,5])
+    indexarray = np.array([1,1,3,8,5]) # every array represent a number of indices in the dimension
     print(a[indexarray]) #indexing using array of index
 
     indexarray = np.array([[3,4],[9,7]]) #bidimensional array
@@ -25,6 +25,12 @@ def main():
     print(a[indexarray, 2]) #for every array in the input generate a value of the row at the index specify in the element and select the element of the row at index 2
     
     print(a[indexarray,  np.array([[1,2,0,1],[1,2,0,1]])])
+
+    #ellipsis -> abbreviate sintax in slicing
+    print(a[...,0]) #equivalent to a[:,0]
+    #newaxis -> add a dimension to the result of the slice
+    print(a.shape)
+    print(a[:, np.newaxis, :].shape)
 
     #using boolean
     a = np.arange(12).reshape(3, 4)
