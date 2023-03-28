@@ -25,7 +25,10 @@ def main():
     s1 = pd.Series({"a":1, "b":1 , "c": 1})
     s2 = pd.Series({"b":1, "d":1})
     print(s1+ s2) #union of index of the series, value is Nan if the label is not presente in both series
+    print(s1.add(s2)) #alternative notation, can specify some option to improve the result of the operation
 
+    #numPy functions
+    print(np.exp(s1))
 
 if __name__ == '__main__':
     main()
