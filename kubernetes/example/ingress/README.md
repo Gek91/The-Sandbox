@@ -14,7 +14,7 @@ verify ingress controller is running<br>
 <code>kubectl get ingress</code> must shot the ingress just created<br>
 
 As specied at ingress addon startup, to access ingress it is necessary to start a minikube tunnel<br>
-<code>kubectl tunnel</code></br>
+<code>minikube tunnel</code></br>
 then then ingress is availabel at 127.0.0.1 (localhost)<br>
 <code>http://127.0.0.1/hello </code>
 
