@@ -4,7 +4,7 @@ Simple example that expose a service as a port on the nodes
 <code>kubectl apply -f node-port-service.yaml</code> to deploy the pod
 
 <code>kubectl get pods --show-label</code> must show the two pods just created with the label of the deploiy<br>
-<code>kubectl get deployments</code> must show the deploy just created<br>ù
+<code>kubectl get deployments</code> must show the deploy just created<br>
 <code>kubectl get services</code> must show the service just created<br>
 <code>kubectl describe service myservice</code> for more information like the port of the nodePOrt
 

@@ -9,9 +9,9 @@ Simple example that crates a service with cluster local ip
 <code>kubectl describe service myservice</code> for more information
 
 once activated the proxy it is possible to use the service to invoke pods api<br>
-<code>kubectl proxy</br>
-<code>http://localhost:8001/api/v1/namespaces/default/services/myservice/proxy/hello </br>
+<code>kubectl proxy</code> </br>
+<code>http://localhost:8001/api/v1/namespaces/default/services/myservice/proxy/hello </code></br>
 
 <h4>clean up<h4>
-<code>kubectl delete deployment mydeployment</code>
+<code>kubectl delete deployment mydeployment</code></br>
 <code>kubectl delete service myservice</code>
