@@ -1,4 +1,4 @@
-Local cluster using minikube
+<h3>Local cluster using minikube</h3>
 
 Need of load local docker images in minikube docker registry to use them in the cluster<br>
 <code>minikube image load <IMAGE_NAME></code>
