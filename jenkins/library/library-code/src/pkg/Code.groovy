@@ -1,6 +1,6 @@
 package pkg;
 
-Class code {
+class Code {
 
     int value;
     String stringValue;

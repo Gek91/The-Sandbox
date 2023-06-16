@@ -1,4 +1,4 @@
-@Library('mylib')
+@Library('mylib')_
 
 pipeline {
     agent any
@@ -10,7 +10,7 @@ pipeline {
 
                     global.info("hello")
 
-                    def lib = new Code()
+                    def lib = new pkg.Code()
                     lib.function()
                 }
                 
