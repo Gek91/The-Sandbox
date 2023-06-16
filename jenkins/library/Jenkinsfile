@@ -1,0 +1,21 @@
+@Library('mylib')
+
+pipeline {
+    agent any
+
+    stages {
+        stage('example') {
+            steps {
+                script {
+
+                    global.info("hello")
+
+                    def lib = new Code()
+                    lib.function()
+                }
+                
+            }
+        }
+        
+    }
+}
