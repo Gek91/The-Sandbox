@@ -10,3 +10,7 @@ class Code {
         echo "library"
     }
 }
+
+def outerfunction() {
+    echo "library"
+}
