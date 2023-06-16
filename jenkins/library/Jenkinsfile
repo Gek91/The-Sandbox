@@ -9,6 +9,7 @@ pipeline {
                 script {
 
                     global.info("hello")
+                    myglobalfunc()
 
                     def lib = new pkg.Code()
                     lib.function()
