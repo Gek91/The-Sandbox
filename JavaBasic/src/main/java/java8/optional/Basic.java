@@ -18,6 +18,7 @@ public class Basic {
 		
 		stringOptional = Optional.of("value");
 		System.out.println(stringOptional.isPresent());
+		System.out.println(stringOptional.get());
 
 		//NullPointerException
 //		stringOptional = Optional.of("value");
