@@ -22,7 +22,7 @@ public class Basic {
 	
 	public static void main(String args[]) {
 		
-//		functionalInterfaceExample();
+		functionalInterfaceExample();
 
 //		streamExample();
 
@@ -50,26 +50,42 @@ public class Basic {
 		// java8.lambda with one argument (get a value, no return)
 		Consumer<Integer> oneArgument = x -> System.out.println("Hello World " + x);
 		oneArgument.accept(10);
-		
+
 		//Supplier:
 		// no argument return a value
 		Supplier<String> noArgumentsReturnValue = () -> "Hello World";
 		System.out.println("noArgumentsReturnValue :" + noArgumentsReturnValue.get());
-		
+
 		//BynaryOperator:
 		// Get two parameter of the same tipe and return a result of the same java8.time
 		BinaryOperator<Long> add = (Long x, Long y) -> x + y;
 		System.out.println("add: " + add.apply(2l, 3l));
-		
+
 		//Function:
 		// get an argument a return a result of a different type
-		Function<Long, String> function = (Long x) -> "value : " + x; 
+		Function<Long, String> function = (Long x) -> "value : " + x;
 		System.out.println("function: " + function.apply(10l));
-		
+
 		//Predicate:
 		// get a value and return a boolean
 		Predicate<Long> booleanValue = (Long x) -> x > 0;
 		System.out.println("booleanValue: " + booleanValue.test(4l));
+
+		//custom functional interface example
+		MyFunctionalInterface myFunction = () -> System.out.println("executed");
+		executeFunctionalInteface(3, myFunction);
+	}
+
+	@FunctionalInterface
+	public interface MyFunctionalInterface {
+		public void execute();
+	}
+
+	private static void executeFunctionalInteface(int times, MyFunctionalInterface myFunctionalInterface) {
+
+		for(int i = 0 ; i < times ; i++) {
+			myFunctionalInterface.execute();
+		}
 	}
 
 	private static void methodReferencesExample() {
