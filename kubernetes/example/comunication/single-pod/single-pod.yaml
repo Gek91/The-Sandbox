@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  application.yml: |
+    HELLO: http://localhost:8080
+    server.port: 8081
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+      - containerPort: 8080
+    - name: basic-consumer
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+      - containerPort: 8081
+      volumeMounts:
+        - mountPath: "/config"
+          name: application-properties
+  volumes:
+    - name: application-properties
+      configMap:
+        name: config

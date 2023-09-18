@@ -12,7 +12,7 @@ access api at
 
 it returns a string this some value<br>
 - HELLO: load and map the full data filed of configMap in container enviroment veriable with the same name of the keys defined
-- SINGLE_HELLO: load a single value from configMap and map it on a custom container enviroment
+- HELLO_SINGLE: load a single value from configMap and map it on a custom container enviroment
 - property key1: load a property defined in the configMap as a volume ad use it as a property file in the application
 
 <h4>clean up<h4>
