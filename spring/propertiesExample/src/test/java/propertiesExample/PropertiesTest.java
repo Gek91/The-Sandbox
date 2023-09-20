@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import propertiesExample.service.EnvironmentFieldService;
 import propertiesExample.service.OtherPropertiesService;
 import propertiesExample.service.PropertiesService;
 
@@ -18,6 +19,9 @@ public class PropertiesTest {
 	@Autowired
 	private OtherPropertiesService otherPropertiesService;
 
+	@Autowired
+	private EnvironmentFieldService environmentFieldService;
+
 	@Test
 	public void test() {
 
@@ -28,5 +32,10 @@ public class PropertiesTest {
 
 		Assert.assertEquals("nopropertiesfield1", otherPropertiesService.getField1());
 		Assert.assertEquals("nopropertiesfield2", otherPropertiesService.getField2());
+	}
+
+	@Test
+	public void enviromentFieldTest() {
+		Assert.assertEquals("environmentfield1", environmentFieldService.getEnvironmentField());
 	}
 }
