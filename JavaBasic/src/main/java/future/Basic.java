@@ -22,7 +22,7 @@ public class Basic {
 
 		//ForkJoinTask is an abstract class which implements Future, and is capable of running a large number of tasks
 		// hosted by a small number of actual threads
-//		forkJoinExample();
+		forkJoinExample();
 
 	}
 
