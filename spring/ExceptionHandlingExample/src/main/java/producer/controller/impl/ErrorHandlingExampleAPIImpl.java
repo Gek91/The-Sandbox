@@ -32,7 +32,7 @@ public class ErrorHandlingExampleAPIImpl implements ErrorHandlingExampleAPI {
 	public ResponseEntity<Void> runMyExceptionWithExceptionHandlerExample() {
 
 		if(Instant.now().toEpochMilli() % 2 == 0) {
-			//exception annotated with specific HTTP status code
+			//exception handled with handler defined in the controller
 			throw new AnotherException();
 		}
 
@@ -43,14 +43,14 @@ public class ErrorHandlingExampleAPIImpl implements ErrorHandlingExampleAPI {
 	public ResponseEntity<Void> runMyExceptionWithAdviceExample() {
 
 		if(Instant.now().toEpochMilli() % 2 == 0) {
-			//exception annotated with specific HTTP status code
+			//exception handled with advice exception handler
 			throw new AdviceException();
 		}
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	//AnotherException handler, in case of the specified exception execute te logic
+	//AnotherException handler, in case of the specified exception execute the logic
 	public ResponseEntity<ErrorResponse> handlerSpecificException() {
 
 		ErrorResponse response = new ErrorResponse();

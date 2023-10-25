@@ -30,10 +30,20 @@ spec:
     spec:
       containers:
         - name:  basic-api
-          image: basic-api
+          image: europe-west1-docker.pkg.dev/tryme-399005/test-ingress/basic-api
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /hello
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /hello
+              port: 8080
+            successThreshold: 3
 
 ---
 
