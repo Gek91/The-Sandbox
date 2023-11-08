@@ -22,6 +22,10 @@ func main() {
 	addRow(db, Exercise{"10", "new name"})
 
 	queryAll(db)
+
+	preparedStatementQuery(db)
+
+	preparedStatementQuery(db, "10")
 }
 
 func getDatabaseConnection() (db *sql.DB) {
@@ -41,6 +45,12 @@ func getDatabaseConnection() (db *sql.DB) {
 		log.Fatal(err)
 	}
 
+	//alternative, using a connection string
+	//sql.Open("mysql", "username:password@tcp(127.0.0.1:3306)/report")
+
+	//alternative, using a connector
+	// mysql.NewConnector(&configuration)
+
 	return
 }
 
@@ -59,6 +69,7 @@ type Exercise struct {
 
 func queryAll(db *sql.DB) {
 
+	//query for multiple rows
 	rows, err := db.Query("SELECT * FROM exercise")
 	defer rows.Close()
 
@@ -92,6 +103,7 @@ func getExerciseFromRow(row *sql.Row) (*Exercise) {
 
 	var exercise *Exercise = new(Exercise)
 	if err := row.Scan(&exercise.Id, &exercise.Name); err != nil {
+		 //check if result is empty, QueryRow command doesn't have error in return to check
 		 if err == sql.ErrNoRows {
 		 	fmt.Println("no row", err)
 		}
@@ -104,6 +116,8 @@ func getExerciseFromRow(row *sql.Row) (*Exercise) {
 
 func queryByName(db *sql.DB, name string) {
 
+	//query for single row
+	//IMPORTANT USE PLACEHOLDER (?) AND VARARGS TO BUILD A QUERY -> prevent sql injection
 	row := db.QueryRow("SELECT * FROM exercise where name = ?", name)
 
 	exercise := getExerciseFromRow(row)
@@ -112,7 +126,15 @@ func queryByName(db *sql.DB, name string) {
 
 func addRow(db *sql.DB, exercise Exercise) {
 
-	result, err := db.Exec("INSERT INTO exercise (id, name) VALUES (?, ?)", exercise.Id, exercise.Name)
+	//use transaction
+	transaction, err := db.Begin()
+	if err != nil {
+		fmt.Errorf("error creating transaction: %v", err)
+	}
+	defer tx.Rollback()
+
+	//use exec method when for query that don't return data
+	result, err := transaction.Exec("INSERT INTO exercise (id, name) VALUES (?, ?)", exercise.Id, exercise.Name)
 	if err != nil {
 		fmt.Errorf("error: %v", err)
 	}
@@ -120,5 +142,20 @@ func addRow(db *sql.DB, exercise Exercise) {
 	if err != nil {
 		fmt.Errorf("error last id: %v", err)
 	}
+
+	if err = transaction.Commit(); err != nil {
+		fmt.Errorf("error in commit: %v", err)
+	}
+}
+
+func preparedStatementQuery(db *sql.DB, id string) {
+
+	//IMPORTANT USE PLACEHOLDER (?) AND VARARGS TO BUILD A QUERY -> prevent sql injection
+	statement := db.Prepare("SELECT * FROM exercise where id = ?")
+
+	row := statement.QueryRow(id)
+
+	exercise := getExerciseFromRow(row)
+    fmt.Println(exercise)
 }
 
