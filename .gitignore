@@ -4,3 +4,8 @@
 *.war
 **/target
 *.lst
+*.terraform.lock.hcl
+terraform.tfstate*
+.terraform/
+*.tfvars
+.terraform.tfstate.lock.info
