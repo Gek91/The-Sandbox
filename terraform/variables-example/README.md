@@ -1,4 +1,6 @@
-Before, it's needed to define the valuee of the variables using a tfvars files or by command line arguments
+Before, it's needed to define the value of the variables using a tfvars files or by command line arguments
+- commadn line flag: <code> terraform apply -var project_id=...</code>
+- create terraform.tfvars file with values in it
 
 <code> terraform init </code> to create terraform project locally<br>
 
