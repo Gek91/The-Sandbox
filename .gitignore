@@ -9,3 +9,5 @@ terraform.tfstate*
 .terraform/
 *.tfvars
 .terraform.tfstate.lock.info
+plan.file
+ciao.txt
