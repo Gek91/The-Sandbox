@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+  labels:
+    app.kubernetes.io/name: myapp
+    app.kubernetes.io/instance: myapp-1
+    app.kubernetes.io/version: 0.0.1
+    app.kubernetes.io/component: application
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: myapp
+    app.kubernetes.io/instance: myapp-1
+    app.kubernetes.io/version: 0.0.1
+    app.kubernetes.io/component: application
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    app.kubernetes.io/name: myapp
+    app.kubernetes.io/instance: myapp-1
+    app.kubernetes.io/version: 0.0.1
+    app.kubernetes.io/component: application
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: myapp
+      app.kubernetes.io/instance: myapp-1
+      app.kubernetes.io/version: 0.0.1
+      app.kubernetes.io/component: application
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: myapp
+        app.kubernetes.io/instance: myapp-1
+        app.kubernetes.io/version: 0.0.1
+        app.kubernetes.io/component: application
+    spec:
+      containers:
+        - name:  basic-api
+          image: basic-api
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080

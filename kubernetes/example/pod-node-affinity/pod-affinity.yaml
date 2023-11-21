@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod1
+  labels:
+    env: dev
+spec:
+  affinity:
+    nodeAffinity: #node affinity
+      preferredDuringSchedulingIgnoredDuringExecution: #select not existing node. not mandatory
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: minikube.k8s.io/name
+              operator: In
+              values:
+              - notexists
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+      - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod2
+  labels:
+    env: dev
+spec:
+  affinity:
+    nodeAffinity: #node affinity
+      requiredDuringSchedulingIgnoredDuringExecution: #select not existing node. Required is mandatory
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: minikube.k8s.io/name
+                operator: In
+                values:
+                - notexists
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod3
+  labels:
+    env: dev
+spec:
+  affinity:
+    podAffinity: #pod affinity
+      preferredDuringSchedulingIgnoredDuringExecution: #not mandatory
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: label
+                operator: In
+                values:
+                - notexists
+            topologyKey: topology.kubernetes.io/zone #mandatory to be specified
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080

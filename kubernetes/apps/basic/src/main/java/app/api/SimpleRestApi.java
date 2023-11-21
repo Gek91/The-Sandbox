@@ -29,7 +29,7 @@ public class SimpleRestApi {
 
 	@GetMapping(path="/hello", produces="application/json")
 	public String hello() {
-		return "hello";
+		return "hello v2";
 	}
 
 	@GetMapping(path="/query", produces="application/json")

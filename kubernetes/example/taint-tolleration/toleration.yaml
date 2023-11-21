@@ -1,0 +1,79 @@
+
+#no toleration pod, not scheduled on the node
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod1
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+      - containerPort: 8080
+
+---
+
+#pod with right toleration, scheduled
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod2
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+  tolerations: #equals
+    - key: "key1"
+      operator: "Equal"
+      value: "value1"
+      effect: "NoSchedule"
+
+---
+
+#pod with right toleration, scheduled
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod3
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+  tolerations: #exists
+    - key: "key1"
+      operator: "Exists"
+      effect: "NoSchedule"
+
+---
+
+#pod with wrong toleration, not scheduled
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod4
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: basic-api
+      image: basic-api
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+  tolerations: #exists
+    - key: "key2"
+      operator: "Exists"
+      effect: "NoSchedule"
