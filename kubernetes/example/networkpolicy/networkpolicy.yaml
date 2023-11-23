@@ -1,0 +1,91 @@
+
+#deny all ingress traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
+#Allow all ingress traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-ingress
+spec:
+  podSelector: {}
+  ingress:
+    - {}
+  policyTypes:
+    - Ingress
+---
+#Deny all egress traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-egress
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+---
+#Allow all egress traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-egress
+spec:
+  podSelector: {}
+  egress:
+    - {}
+  policyTypes:
+    - Egress
+---
+#Deny all ingress and egress traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+#Complete option example
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: default
+spec:
+  podSelector: #Select the pod to apply the policy
+    matchLabels:
+      role: db
+  policyTypes: #traffic type in the policy
+    - Ingress
+    - Egress
+  ingress: #ingress filter
+    - from:
+        - ipBlock: #ip bloc filter
+            cidr: 172.17.0.0/16
+            except:
+              - 172.17.1.0/24
+        - namespaceSelector: #namespace filter
+            matchLabels:
+              project: myproject
+        - podSelector: #pod filter
+            matchLabels:
+              role: frontend
+      ports: #targeting port
+        - protocol: TCP
+          port: 6379
+  egress: #egress filter
+    - to:
+        - ipBlock:
+            cidr: 10.0.0.0/24
+      ports: #targeting port
+        - protocol: TCP
+          port: 5978

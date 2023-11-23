@@ -1,0 +1,31 @@
+#NOT WORKING...
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+spec:
+  ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 443
+---
+
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: myservice-1 # by convention, use the name of the Service
+  # as a prefix for the name of the EndpointSlice
+  labels:
+    # You should set the "kubernetes.io/service-name" label.
+    # Set its value to match the name of the Service
+    kubernetes.io/service-name: myservice
+addressType: FQDN
+ports:
+  - name: ''
+    appProtocol: http
+    protocol: TCP
+    port: 443
+endpoints:
+  - addresses:
+      - "www.google.com"
