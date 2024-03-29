@@ -1,4 +1,4 @@
-Before, it's needed to define the valuee of the variables using a tfvars files or by command line arguments
+Before, it's needed to define the value of the variables using a tfvars files or by command line arguments
 
 <code> terraform init </code> to create terraform project locally<br>
 

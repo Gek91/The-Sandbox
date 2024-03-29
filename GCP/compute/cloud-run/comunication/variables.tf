@@ -7,3 +7,8 @@ variable project_id {
 variable image_name {
   type = string
 }
+
+variable region_id {
+  type = string
+  nullable = false
+}
