@@ -1,0 +1,2 @@
+Example of using qualifier annotation to bind more bean to a single interface and inject them as list in the DI engine.
+This is useful to implement lifecycle call back in a complex module hierarchy in order to not add inverse dependencies or use event architecture to manage side effect in child modules triggered by operation from father module
