@@ -1,0 +1,1 @@
+every workflow must be saved on the github repository in the directory .github/workflows as a YAML file

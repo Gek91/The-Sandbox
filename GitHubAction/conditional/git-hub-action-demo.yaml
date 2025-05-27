@@ -1,0 +1,22 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  run_if_label_matches:
+    if: github.event.label.name == 'bug'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'The label was bug'
+  production-deploy: #unrelated example
+    if: github.repository == 'octo-org/octo-repo-prod'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+      - run: npm install -g bats

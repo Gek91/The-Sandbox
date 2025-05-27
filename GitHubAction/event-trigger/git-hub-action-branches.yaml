@@ -1,0 +1,14 @@
+name: GitHub Actions
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches:
+      - main
+jobs:
+  print_context:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        run: |
+          echo $EVENT_CONTEXT
