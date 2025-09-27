@@ -10,6 +10,8 @@ import (
 	"strings"
  	"github.com/golang-jwt/jwt/v4"
  	"google.golang.org/api/idtoken"
+ 	"database/sql"
+    _ "github.com/lib/pq"
 )
 
 func getHello(context *gin.Context) {
@@ -132,6 +134,34 @@ func receiveCall(ginContext *gin.Context) {
 	    ginContext.IndentedJSON(http.StatusOK, "OK!")
 	}}
 
+func connectSQL(ginContext *gin.Context) {
+
+	//LOCAL with cloud proxy: "postgres://prova:prova@localhost:3306/postgres?sslmode=disable".
+	//Needed to create user prova with prova psw and launch cloud proxy pointing the instance on port 3306
+	connectionStr := os.Getenv("DB-CONNECTION-STRING")
+
+	conn, err := sql.Open("postgres", connectionStr)
+	if err != nil {
+		panic(err)
+	}
+
+	rows, err := conn.Query("SELECT version();")
+	if err != nil {
+		panic(err)
+	}
+
+	for rows.Next() {
+		var version string
+		rows.Scan(&version)
+		log.Println(version)
+	}
+
+	rows.Close()
+	conn.Close()
+
+	ginContext.IndentedJSON(http.StatusOK, "Connected!")
+}
+
 func main() {
     router := gin.Default()
 
@@ -141,5 +171,6 @@ func main() {
     router.GET("/make-call", makeCall)
     router.GET("/make-call-open-id", makeCallOpenId)
     router.GET("/receive-call", receiveCall)
+    router.GET("/connect-sql", connectSQL)
     router.Run(":8080")
 }
