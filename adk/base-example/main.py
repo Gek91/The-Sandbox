@@ -1,4 +1,5 @@
 from google.adk.sessions import InMemorySessionService
+from google.adk.artifacts import InMemoryArtifactService 
 from google.adk.runners import Runner
 from google.genai import types
 import json
@@ -11,16 +12,19 @@ from dotenv import load_dotenv
 
 async def main():
     session_service = InMemorySessionService()
+    artifact_service = InMemoryArtifactService()
     session = await session_service.create_session(
         app_name="app", 
         user_id="user", 
         session_id="session",
           state={})
+    
 
     runner = Runner(
         agent=trip_agent, # Pass the custom orchestrator agent
         app_name="app",
-        session_service=session_service
+        session_service=session_service,
+        artifact_service=artifact_service
     )
 
     ####
