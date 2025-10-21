@@ -1,6 +1,6 @@
 [project]
-name = "myproj"
-version = "0.1.0"
+name = "adk-example"
+version = "0.1.0"x
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"

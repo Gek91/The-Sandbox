@@ -1,0 +1,16 @@
+[project]
+name = "a2a-adk"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "google-adk>=1.16.0",
+    "a2a-sdk>=0.3.0",
+    "starlette>=0.46.2",
+    "uvicorn>=0.34.2",
+    "sse-starlette>=2.3.5",
+    "starlette>=0.46.2",
+]
+
+
